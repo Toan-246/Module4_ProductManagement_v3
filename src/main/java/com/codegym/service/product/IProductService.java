@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 public interface IProductService extends IGeneralService<Product> {
 	Page<Product> findAll(Pageable pageable);
 
-	Page<Product> findAllByNameContaining(String name, Pageable pageable);
+	Iterable<Product> findAllByNameContaining(String name);
 
 	Iterable<Product> findAllByPriceBetween (Double min, Double max);
 }
