@@ -23,4 +23,12 @@ public class ProductRestController {
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Product> findById(@RequestParam Long id){
+//        Optional<Product> product = productService.findById(id);
+//        if (!product.isPresent()){
+//            return new ResponseEntity<>(product, HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(product, HttpStatus.OK);
+//    }
 }
