@@ -45,7 +45,7 @@ public class ProductController {
 	}
 
 	@GetMapping ("")
-	public ModelAndView showAllProduct (@RequestParam (name = "q")Optional<String> q, @PageableDefault(value = 10) Pageable pageable){
+	public ModelAndView showAllProduct (@RequestParam (name = "q")Optional<String> q, @PageableDefault(value = 3) Pageable pageable){
 		Page<Product> products;
 		ModelAndView modelAndView = new ModelAndView("/product/list");
 		if (q.isPresent()){
