@@ -14,7 +14,7 @@ public class ProductForm {
 	private String name;
 
 	@NotNull (message = "Không được để trống")
-	private Double price;
+	private double price;
 
 	@NotEmpty (message = "Không được để trống")
 	private String description;
@@ -25,7 +25,7 @@ public class ProductForm {
 	public ProductForm() {
 	}
 
-	public ProductForm(Long id, String name, Double price, String description, MultipartFile image, Category category) {
+	public ProductForm(Long id, String name, double price, String description, MultipartFile image, Category category) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
@@ -50,7 +50,7 @@ public class ProductForm {
 		this.name = name;
 	}
 
-	public Double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 

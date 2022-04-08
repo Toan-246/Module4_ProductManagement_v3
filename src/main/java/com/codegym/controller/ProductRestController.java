@@ -23,12 +23,35 @@ public class ProductRestController {
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Product> findById(@RequestParam Long id){
-//        Optional<Product> product = productService.findById(id);
-//        if (!product.isPresent()){
-//            return new ResponseEntity<>(product, HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<>(product, HttpStatus.OK);
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> findById(@PathVariable Long id){
+        Optional<Product> product = productService.findById(id);
+        if (!product.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(product.get(), HttpStatus.OK);
+    }
+    @PostMapping
+    public ResponseEntity<Product> saveProduct (@RequestBody Product product){
+        return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
+    }
+    @PutMapping ("/{id}")
+    public ResponseEntity<Product> updateProduct (@PathVariable Long id,@RequestBody Product newProduct){
+        Optional<Product> optionalProduct = productService.findById(id);
+        if (!optionalProduct.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        newProduct.setId(optionalProduct.get().getId());
+        return new ResponseEntity<>(productService.save(newProduct), HttpStatus.OK);
+    }
+
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<Product> deleteProduct (@PathVariable Long id){
+        Optional<Product> optionalProduct = productService.findById(id);
+        if (!optionalProduct.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        productService.deleteById(id);
+        return new ResponseEntity<>(optionalProduct.get(), HttpStatus.OK);
+    }
 }

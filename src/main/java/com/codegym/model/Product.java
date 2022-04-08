@@ -18,7 +18,7 @@ public class Product {
 
 	@Column (nullable = false)
 	@NotNull (message = "Không được để trống")
-	private Double price;
+	private double price;
 
 	@Column (nullable = false)
 	@NotEmpty (message = "Không được để trống")
@@ -31,7 +31,7 @@ public class Product {
 	public Product() {
 	}
 
-	public Product(Long id, String name, Double price, String description, String image, Category category) {
+	public Product(Long id, String name, double price, String description, String image, Category category) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
@@ -56,7 +56,7 @@ public class Product {
 		this.name = name;
 	}
 
-	public Double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
